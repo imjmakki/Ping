@@ -52,7 +52,8 @@ public class ServerServiceImpl implements ServerService {
 
     @Override
     public Server getServer(Long id) {
-        return null;
+        log.info("Grabbing server in the system with specific id: {}", id);
+        return serverDAO.findById(id).get();
     }
 
     @Override
