@@ -13,6 +13,7 @@ import java.net.InetAddress;
 import java.util.Collection;
 
 import static app.ping.pingring.Utility.enums.Status.*;
+import static org.springframework.data.domain.PageRequest.*;
 
 @Service
 @Transactional
@@ -28,14 +29,14 @@ public class ServerServiceImpl implements ServerService {
 
     @Override
     public Server addServer(Server server) {
-        log.info("adding new ip to ping on: {}", server.getName());
+        log.info("Adding new ip to ping on: {}", server.getName());
         server.setImageUrl(setServerImageUrl());
         return serverDAO.save(server);
     }
 
     @Override
     public Server ping(String ipAddress) throws IOException {
-        log.info("pinging the server: {}", ipAddress);
+        log.info("Pinging the server: {}", ipAddress);
         Server server = serverDAO.findByIpAddress(ipAddress);
         InetAddress address = InetAddress.getByName(ipAddress);
         server.setStatus(address.isReachable(10000) ? SERVER_UP : SERVER_DOWN);
@@ -45,7 +46,8 @@ public class ServerServiceImpl implements ServerService {
 
     @Override
     public Collection<Server> all(Integer limit) {
-        return null;
+        log.info("Grabbing all servers in the system");
+        return serverDAO.findAll(of(0, limit)).toList();
     }
 
     @Override
