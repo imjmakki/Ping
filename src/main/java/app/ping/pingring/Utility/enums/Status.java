@@ -1,4 +1,4 @@
-package app.ping.pingring.enums;
+package app.ping.pingring.Utility.enums;
 
 public enum Status {
     SERVER_UP("SERVER_UP"),

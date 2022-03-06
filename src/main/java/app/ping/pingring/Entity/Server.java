@@ -1,6 +1,6 @@
 package app.ping.pingring.Entity;
 
-import app.ping.pingring.enums.Status;
+import app.ping.pingring.Utility.Implementation.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

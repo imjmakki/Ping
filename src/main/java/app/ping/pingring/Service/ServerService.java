@@ -8,6 +8,9 @@ import java.util.Collection;
 @Service
 public interface ServerService {
 
-    Server add(Server server);
+    Server addServer(Server server);
     Collection<Server> all(Integer limit);
+    Server getServer(Long id);
+    Server editServer(Server server);
+    Boolean deleteServer(Long id);
 }
