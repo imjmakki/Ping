@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface ServerDAO extends JpaRepository<Server, Long> {
 
     Server findByIpAddress(String ipAddress);
+    Server findByName(String name);
 }
