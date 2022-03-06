@@ -8,7 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.io.IOException;
+import java.net.InetAddress;
 import java.util.Collection;
+
+import static app.ping.pingring.Utility.enums.Status.*;
 
 @Service
 @Transactional
@@ -24,12 +28,19 @@ public class ServerServiceImpl implements ServerService {
 
     @Override
     public Server addServer(Server server) {
-        return null;
+        log.info("adding new ip to ping on: {}", server.getName());
+        server.setImageUrl(setServerImageUrl());
+        return serverDAO.save(server);
     }
 
     @Override
-    public Server ping(String ipAddress) {
-        return null;
+    public Server ping(String ipAddress) throws IOException {
+        log.info("pinging the server: {}", ipAddress);
+        Server server = serverDAO.findByIpAddress(ipAddress);
+        InetAddress address = InetAddress.getByName(ipAddress);
+        server.setStatus(address.isReachable(10000) ? SERVER_UP : SERVER_DOWN);
+        serverDAO.save(server);
+        return server;
     }
 
     @Override
@@ -49,6 +60,10 @@ public class ServerServiceImpl implements ServerService {
 
     @Override
     public Boolean deleteServer(Long id) {
+        return null;
+    }
+
+    private String setServerImageUrl() {
         return null;
     }
 }
