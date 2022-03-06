@@ -22,7 +22,7 @@ public class Server implements Serializable {
     @GeneratedValue(strategy = AUTO)
     private Long id;
 
-    @NotEmpty
+    @NotEmpty(message = "IP address is required can not be empty or null")
     @Column(name = "ip", unique = true)
     private String ipAddress;
 
