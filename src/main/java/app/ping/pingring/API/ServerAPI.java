@@ -15,6 +15,7 @@ import static app.ping.pingring.Utility.enums.Status.*;
 import static java.time.LocalDateTime.now;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.http.MediaType.IMAGE_PNG_VALUE;
 
 @RestController
 @RequestMapping("/server")
@@ -106,7 +107,7 @@ public class ServerAPI {
         );
     }
 
-    @GetMapping("/image/{fileName}")
+    @GetMapping(path = "/image/{fileName}", produces = IMAGE_PNG_VALUE)
     public byte[] getServerImage(@PathVariable("fileName") String fileName) {
         return
     }
