@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 import static javax.persistence.GenerationType.*;
@@ -20,10 +21,19 @@ public class Server implements Serializable {
     @Id
     @GeneratedValue(strategy = AUTO)
     private Long id;
+
+    @NotEmpty
+    @Column(name = "ip", unique = true)
     private String ipAddress;
+
+    @Column(name = "server_name")
     private String name;
     private String memory;
+
+    @Column(name = "server_type")
     private String type;
+
+    @Column(name = "image")
     private String imageUrl;
     private Status status;
 }
