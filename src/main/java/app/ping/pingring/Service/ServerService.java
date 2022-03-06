@@ -9,6 +9,7 @@ import java.util.Collection;
 public interface ServerService {
 
     Server addServer(Server server);
+    Server ping(String ipAddress);
     Collection<Server> all(Integer limit);
     Server getServer(Long id);
     Server editServer(Server server);
