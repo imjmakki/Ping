@@ -13,6 +13,7 @@ import java.net.InetAddress;
 import java.util.Collection;
 
 import static app.ping.pingring.Utility.enums.Status.*;
+import static java.lang.Boolean.*;
 import static org.springframework.data.domain.PageRequest.*;
 
 @Service
@@ -58,12 +59,15 @@ public class ServerServiceImpl implements ServerService {
 
     @Override
     public Server editServer(Server server) {
-        return null;
+        log.info("Update and existing server: {}", server.getName());
+        return serverDAO.save(server);
     }
 
     @Override
     public Boolean deleteServer(Long id) {
-        return null;
+        log.info("Removing server from the system: {}", id);
+        serverDAO.deleteById(id);
+        return TRUE;
     }
 
     private String setServerImageUrl() {
