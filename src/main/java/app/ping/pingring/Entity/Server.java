@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
+import static javax.persistence.GenerationType.*;
+
 @Entity
 @Table(name = "servers")
 @NoArgsConstructor
@@ -16,7 +18,7 @@ import java.io.Serializable;
 public class Server implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = AUTO)
     private Long id;
     private String ipAddress;
     private String name;
