@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static app.ping.pingring.Utility.enums.Status.*;
 import static java.time.LocalDateTime.now;
@@ -33,6 +34,8 @@ public class ServerAPI {
 
     @GetMapping("/all")
     public ResponseEntity<HttpResponse> getServers() {
+//        delay of time reloading
+//        TimeUnit.SECONDS.sleep(3);
         return ResponseEntity.ok(
           HttpResponse.builder()
                   .timeStamp(now())
