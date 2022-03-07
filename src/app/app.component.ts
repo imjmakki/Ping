@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
         }),
         startWith({ dataState: DataState.LOADING_STATE }),
         catchError((error: string) => {
-          return of({ dataState: DataState.ERROR_STATE })
+          return of({ dataState: DataState.ERROR_STATE, error: error })
         })
       );
   }
